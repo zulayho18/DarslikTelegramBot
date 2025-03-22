@@ -1,0 +1,24 @@
+version: "3.8"
+
+services:
+  django:
+    build:
+      context: .
+    container_name: django
+    restart: always
+    ports:
+      - "8000:8000"
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://localhost:8000" ]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+
+  telegram_bot:
+    build:
+      context: .
+    container_name: telegram_bot
+    restart: always
+    depends_on:
+      - django
+    command: ["python", "main.py"]
