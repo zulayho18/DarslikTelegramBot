@@ -92,7 +92,7 @@ async def send_textbooks(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 
 
-DJANGO_API_URL = "http://django:8000/api/books/"  # docker-compose.yml dagi nomni ishlatish kerak
+DJANGO_API_URL = "http://127.0.0.1:8000/api/books/"
 
 response = requests.get(DJANGO_API_URL)
 if response.status_code == 200:
